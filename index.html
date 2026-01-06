@@ -2,97 +2,86 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <title>Threads 認証</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Threads ログイン</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
     body {
       margin: 0;
-      min-height: 100vh;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: linear-gradient(135deg, #0f172a, #020617);
-      color: #e5e7eb;
+      height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
+      background: radial-gradient(circle at top, #111827, #020617);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #fff;
     }
 
     .card {
-      width: 100%;
-      max-width: 420px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
       border-radius: 16px;
       padding: 32px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+      width: 320px;
       text-align: center;
-    }
-
-    .logo {
-      font-size: 40px;
-      margin-bottom: 12px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
     }
 
     h1 {
-      font-size: 22px;
-      margin: 0 0 8px;
+      font-size: 18px;
+      margin-bottom: 12px;
     }
 
     p {
-      font-size: 14px;
-      line-height: 1.6;
-      color: #cbd5f5;
-      margin-bottom: 28px;
+      font-size: 13px;
+      opacity: 0.7;
+      margin-bottom: 24px;
     }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
+    button {
       width: 100%;
-      padding: 14px 18px;
-      font-size: 15px;
-      font-weight: 600;
-      color: #0f172a;
-      background: linear-gradient(135deg, #ffffff, #e5e7eb);
-      border: none;
+      padding: 14px;
       border-radius: 10px;
+      border: none;
+      font-size: 14px;
+      font-weight: bold;
       cursor: pointer;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-      text-decoration: none;
+      background: linear-gradient(135deg, #ffffff, #e5e7eb);
+      color: #000;
     }
 
-    .btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 8px 20px rgba(255,255,255,0.15);
-    }
-
-    .note {
-      margin-top: 18px;
-      font-size: 12px;
-      color: #94a3b8;
+    button:hover {
+      opacity: 0.9;
     }
   </style>
 </head>
 
 <body>
   <div class="card">
-    <div class="logo">🧵</div>
     <h1>Threads 認証</h1>
-    <p>
-      このツールを利用するために、<br>
-      Threads アカウントとの連携を行います。
-    </p>
+    <p>Threadsアカウントでログインします</p>
 
-    <!-- 後でここを OAuth URL に差し替える -->
-    <a class="btn" href="#">
-      Threads でログイン
-    </a>
-
-    <div class="note">
-      投稿やアカウント情報を勝手に操作することはありません
-    </div>
+    <button onclick="loginWithThreads()">
+      Threadsでログイン
+    </button>
   </div>
+
+  <script>
+    function loginWithThreads() {
+      const clientId = "1997496644164842";
+
+      const redirectUri =
+        "https://threads-login-mo4w-git-main-hiyatokun-devs-projects.vercel.app/callback";
+
+      const authUrl =
+        "https://www.facebook.com/v19.0/dialog/oauth"
+        + "?client_id=" + clientId
+        + "&redirect_uri=" + encodeURIComponent(redirectUri)
+        + "&response_type=code"
+        + "&scope=threads_basic";
+
+      window.location.href = authUrl;
+    }
+  </script>
 </body>
 </html>
