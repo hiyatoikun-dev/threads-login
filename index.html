@@ -2,31 +2,20 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <title>Threads 認証</title>
+  <title>Threads Login Test</title>
 </head>
 <body>
+  <h1>Threads OAuth テスト</h1>
 
-  <button id="login">Threadsでログイン</button>
-
-  <script>
-    document.getElementById("login").onclick = () => {
-
-      const CLIENT_ID = "1997496644164842"; 
-      // ↑ ThreadsアプリID（Meta画面の「ThreadsアプリID」）
-
-      const REDIRECT_URI =
-        "https://threads-login-mo4w-git-main-hiyatokun-devs-projects.vercel.app/callback";
-
-      const AUTH_URL =
-        "https://www.threads.net/oauth/authorize" +
-        "?client_id=" + CLIENT_ID +
-        "&redirect_uri=" + encodeURIComponent(REDIRECT_URI) +
-        "&response_type=code" +
-        "&scope=threads_basic";
-
-      location.href = AUTH_URL;
-    };
-  </script>
+  <a
+    href="https://www.threads.net/oauth/authorize
+      ?client_id=【ThreadsアプリID】
+      &redirect_uri=https://threads-login-mo4w.vercel.app/callback
+      &response_type=code
+      &scope=threads_basic"
+  >
+    Threadsでログイン
+  </a>
 
 </body>
 </html>
