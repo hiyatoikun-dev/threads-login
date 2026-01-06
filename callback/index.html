@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Threads Callback</title>
+</head>
+<body>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get("code");
+
+  document.body.innerText = code
+    ? "OAuth 成功\n\ncode = " + code
+    : "code が見つかりません";
+</script>
+</body>
+</html>
