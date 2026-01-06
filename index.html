@@ -2,86 +2,31 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <title>Threads ログイン</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: radial-gradient(circle at top, #111827, #020617);
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      color: #fff;
-    }
-
-    .card {
-      background: rgba(255,255,255,0.05);
-      backdrop-filter: blur(10px);
-      border-radius: 16px;
-      padding: 32px;
-      width: 320px;
-      text-align: center;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-    }
-
-    h1 {
-      font-size: 18px;
-      margin-bottom: 12px;
-    }
-
-    p {
-      font-size: 13px;
-      opacity: 0.7;
-      margin-bottom: 24px;
-    }
-
-    button {
-      width: 100%;
-      padding: 14px;
-      border-radius: 10px;
-      border: none;
-      font-size: 14px;
-      font-weight: bold;
-      cursor: pointer;
-      background: linear-gradient(135deg, #ffffff, #e5e7eb);
-      color: #000;
-    }
-
-    button:hover {
-      opacity: 0.9;
-    }
-  </style>
+  <title>Threads 認証</title>
 </head>
-
 <body>
-  <div class="card">
-    <h1>Threads 認証</h1>
-    <p>Threadsアカウントでログインします</p>
 
-    <button onclick="loginWithThreads()">
-      Threadsでログイン
-    </button>
-  </div>
+  <button id="login">Threadsでログイン</button>
 
   <script>
-    function loginWithThreads() {
-      const clientId = 1598706337987269;
+    document.getElementById("login").onclick = () => {
 
-      const redirectUri =
+      const CLIENT_ID = "1997496644164842"; 
+      // ↑ ThreadsアプリID（Meta画面の「ThreadsアプリID」）
+
+      const REDIRECT_URI =
         "https://threads-login-mo4w-git-main-hiyatokun-devs-projects.vercel.app/callback";
 
-      const authUrl =
-        "https://www.facebook.com/v19.0/dialog/oauth"
-        + "?client_id=" + clientId
-        + "&redirect_uri=" + encodeURIComponent(redirectUri)
-        + "&response_type=code"
-        + "&scope=threads_basic";
+      const AUTH_URL =
+        "https://www.threads.net/oauth/authorize" +
+        "?client_id=" + CLIENT_ID +
+        "&redirect_uri=" + encodeURIComponent(REDIRECT_URI) +
+        "&response_type=code" +
+        "&scope=threads_basic";
 
-      window.location.href = authUrl;
-    }
+      location.href = AUTH_URL;
+    };
   </script>
+
 </body>
 </html>
